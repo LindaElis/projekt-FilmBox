@@ -103,4 +103,56 @@ const filmy = [
 			'Na zámek v podhůří Krkonoš přijíždí jeho nový majitel Štěpán se svojí snoubenkou, krásnou komtesou Blankou, a mladším bratrem Adamem. Cestou kočár nešťastně srazí kolemjdoucí dívku, Adam jí pomůže a ona se do něj zamiluje. Na zámku Adam objeví starou vlašskou knihu, která by měla obsahovat cestu k pokladům. Tajemné značky vlašské knihy však nedokáže vyluštit ani národopisec Jiráček, který v kraji sbírá pověsti a nevychází z údivu nad tím, že zdejší lidé stále věří v Krakonoše. Na zámku se objeví záhadný cizinec a nabídne Štěpánovi, že jej k pokladu za určitých podmínek dovede. Výprava do hor může začít. Naplní se Liduščina láska k Adamovi? Jakou záhadu skrývá starý obraz na zámku Hůrka a co strašlivého se v horách kdysi odehrálo? A kdo je vlastně Krakonoš a jaké je jeho největší tajemství? (csfd.cz, Česká televize)',
 		premiera: '2022-12-24',
 	},
+	//pridanie filmu podla vlastneho vyberu
+	 
+	{
+		id: 'Zpívej',
+		nazev: 'Zpívej',
+		plakat: {
+			url: 'https://www.dvdlipa.sk/26081-large_default/zpivej-sing-dvd.jpg',
+			sirka: 420,
+			vyska: 592,
+		},
+		ochutnavka: 'Americká rozprávka',
+		popis:
+			'Rozprávka o zviertkách, ktoré spievajú v súťaži.',
+		premiera: '2020-12-01',
+	},
 ]
+
+
+//4.zoznam filmov
+document.body.innerHTML += ` ${filmy} `
+
+
+const zoznamFilmov = document.querySelector("#seznam-filmu")
+
+zoznamFilmov.innerHTML = ""
+
+
+filmy.forEach(film => {
+	const kartaDiv = document.createElement("div")
+	kartaDiv.className = "col"
+	zoznamFilmov.innerHTML = `
+	
+  <div class="card">
+    <img src="${film.plakat}"
+      width="780"
+      height="520"
+      class="card-img-top"
+      alt="plakat"
+    />
+    <div class="card-body">
+      <h5 class="card-title">${film.nazev}</h5>
+      <p class="card-text">${film.ochutnavka}</p>
+      <a href="film.html" class="btn btn-primary">Přehrát</a>
+    </div>
+ 
+</div>`
+
+
+})
+
+
+
+

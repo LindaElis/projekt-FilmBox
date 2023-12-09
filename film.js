@@ -104,3 +104,66 @@ const filmy = [
 		premiera: '2022-12-24',
 	},
 ]
+
+
+//Uloha 6
+const datumPremiery = dayjs("2022-11-29")
+const dnes = dayjs()
+ console.log(dnes)
+
+//kolko dni chyba do premiery alebo kolko dni je po premiere
+const kolkoDni = dayjs("2022-12-24").diff(dayjs(), 'days')
+
+console.log(kolkoDni)
+let vysledok= ""
+
+if (kolkoDni === 1) {
+	vysledok = " - Zajtra"
+}	else if (kolkoDni === 0 ) {
+	vysledok = " - Dnes"
+}	else if (kolkoDni === -1 ) {
+	vysledok = " - Včera"
+}	else if (kolkoDni > -1 ) {
+	vysledok = ` - Za ${kolkoDni} ${-kolkoDni === -2 ? "dny" : "dni"}`
+}	else if (kolkoDni < 1 ) {
+	vysledok = ` - Pred ${-kolkoDni} ${-kolkoDni === 2 ? "dny" : "dni"}`
+}
+const premieraElement = document.querySelector("#premiera")
+
+const formatDatumuPremiery = datumPremiery.format('D. M. YYYY')
+
+premieraElement.innerHTML = `<strong>Premiera ${formatDatumuPremiery}</strong> ${vysledok}`
+
+//Uloha 7
+
+function zvyrazdnenieHviezdiciek(hodnotenie) {
+	const hviezdy1 = document.querySelector(".fa-star")
+
+ hviezdy1.forEach((hviezda, index) => {
+	if (index >= hodnotenie) {
+		hviezda.classList.remove("fas")
+		hviezda.classList.add("far")
+	}	else {
+		hviezda.classList.remove("far")
+		hviezda.classList.add("fas")
+	}
+})
+console.log(zvyrazdnenieHviezdiciek(3))
+
+const hviezdy = document.querySelector(".fa-star")
+let posledneKliknutieNaHviezduIndex = 0
+hviezdy.forEach((hviezda, index) => {
+	hviezda.addEventListener("click", () => {
+		const kliknutieIndex = index + 1
+		posledneKliknutieNaHviezduIndex = kliknutieIndex
+		zvyrazdnenieHviezdiciek(kliknutieIndex)
+	})
+	hviezda.addEventListener("mouseenter" , () => {
+		const indexOznacenychHviezd = index + 1
+		zvyrazdnenieHviezdiciek(indexOznacenychHviezd)
+	})
+	hviezda.addEventListener("mouseleave", () => {
+		zvyrazdnenieHviezdiciek(posledneKliknutieNaHviezduIndex)
+	})}
+)
+}
