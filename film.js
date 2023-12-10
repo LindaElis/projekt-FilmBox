@@ -137,20 +137,20 @@ premieraElement.innerHTML = `<strong>Premiera ${formatDatumuPremiery}</strong> $
 //Uloha 7
 
 function zvyrazdnenieHviezdiciek(hodnotenie) {
-	const hviezdy1 = document.querySelector(".fa-star")
+	const hviezdy = document.querySelectorAll(".fa-star")
 
- hviezdy1.forEach((hviezda, index) => {
-	if (index >= hodnotenie) {
-		hviezda.classList.remove("fas")
-		hviezda.classList.add("far")
-	}	else {
+ hviezdy.forEach((hviezda, index) => {
+	if (index < hodnotenie) {
 		hviezda.classList.remove("far")
 		hviezda.classList.add("fas")
+	}	else {
+		hviezda.classList.remove("fas")
+		hviezda.classList.add("far")
 	}
 })
-console.log(zvyrazdnenieHviezdiciek(3))
+}
 
-const hviezdy = document.querySelector(".fa-star")
+const hviezdy = document.querySelectorAll(".fa-star")
 let posledneKliknutieNaHviezduIndex = 0
 hviezdy.forEach((hviezda, index) => {
 	hviezda.addEventListener("click", () => {
@@ -166,4 +166,4 @@ hviezdy.forEach((hviezda, index) => {
 		zvyrazdnenieHviezdiciek(posledneKliknutieNaHviezduIndex)
 	})}
 )
-}
+

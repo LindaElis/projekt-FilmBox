@@ -122,7 +122,7 @@ const filmy = [
 
 
 //4.zoznam filmov
-document.body.innerHTML += ` ${filmy} `
+
 
 
 const zoznamFilmov = document.querySelector("#seznam-filmu")
@@ -130,10 +130,8 @@ const zoznamFilmov = document.querySelector("#seznam-filmu")
 zoznamFilmov.innerHTML = ""
 
 
-filmy.forEach(film => {
-	const kartaDiv = document.createElement("div")
-	kartaDiv.className = "col"
-	zoznamFilmov.innerHTML = `
+filmy.forEach(film  => {
+	zoznamFilmov.innerHTML += `
 	
   <div class="card">
     <img src="${film.plakat}"
